@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="HomyjobBundle\Entity\Region" table="region">
+    <id name="regionId" type="integer" column="region_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="regionValue" type="string" column="region_value" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">nom de la region</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

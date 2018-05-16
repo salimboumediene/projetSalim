@@ -1,0 +1,46 @@
+{% extends "@Homyjob/header.html.twig" %}
+
+{% block body %} 
+<body class = "bg-white">
+    <div class ="container">
+        <h2 class ="mt-4 text-dark">Mon adresse email</h2>
+        <div class = "d-flex justify-content-center">
+            <form>
+                <div class="d-flex justify-content-center mt-5">
+                    <input id="email" type="email" placeholder="E-mail" class="pl-3 pr-3 h-50">
+                </div>
+                <p class="explication" class="mb-5">
+                    Veuillez saisir votre adresse e-mail afin de 
+                    pouvoir accéder à votre compte en cas de perte du mot de passe.
+                </p>
+                <div class="d-flex justify-content-center"></div>
+                    <button type="button" class="btn pl-5 pr-5 mt-5 btn-light border btn-lg" onclick="valider()" >Suivant</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% block javascript %}
+    <script type="text/javascript">
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+        });
+        return vars;
+    }
+
+    var type = getUrlVars()['type'];
+        
+    function valider() {
+        if (!$("input").val()){
+            alert("Veullez remplir les champs vides")
+        } else {
+            window.location='pswdForm.html?type=' + type + '&email=' + document.getElementById("email").value;
+        }
+    }
+    </script>
+{% endblock %}
+
+</body>
+{% endblock %} 

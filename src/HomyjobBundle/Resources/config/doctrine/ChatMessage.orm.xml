@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="HomyjobBundle\Entity\ChatMessage" table="chat_message">
+    <indexes>
+      <index name="chat_id_2" columns="chat_id"/>
+      <index name="message_id" columns="message_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="chat_id" columns="chat_id,message_id"/>
+    </unique-constraints>
+    <id name="chatMessageId" type="integer" column="chat_message_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="messageId" type="integer" column="message_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">identifiant du message</option>
+      </options>
+    </field>
+    <many-to-one field="chat" target-entity="Chat" fetch="LAZY">
+      <join-columns>
+        <join-column name="chat_id" referenced-column-name="chat_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="HomyjobBundle\Entity\Chat" table="chat">
+    <indexes>
+      <index name="employeur_id_2" columns="employeur_id"/>
+      <index name="apprenti_id" columns="apprenti_id"/>
+      <index name="message_id" columns="message_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="employeur_id" columns="employeur_id,apprenti_id"/>
+    </unique-constraints>
+    <id name="chat" association-key="true"/>
+    <field name="employeurId" type="integer" column="employeur_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">identifiant de l'employeur</option>
+      </options>
+    </field>
+    <field name="apprentiId" type="integer" column="apprenti_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">dientifiant de l'apprenti</option>
+      </options>
+    </field>
+    <one-to-one field="chat" target-entity="ChatMessage" fetch="LAZY">
+      <join-columns>
+        <join-column name="chat_id" referenced-column-name="chat_id"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="message" target-entity="Message" fetch="LAZY">
+      <join-columns>
+        <join-column name="message_id" referenced-column-name="message_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

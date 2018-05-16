@@ -1,0 +1,32 @@
+{
+    "name": "com.homyjob.app",
+    "displayName": "Homyjob",
+    "version": "1.1.8",
+    "description": "Application de matching dans la recherche d'emploi",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Christian Kinda",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "cordova-admob": "^4.1.16",
+        "cordova-android": "^6.2.3",
+        "cordova-connectivity-monitor": "^1.2.2",
+        "cordova-ios": "^4.5.4",
+        "cordova-libgoogleadmobads": "git+https://github.com/appfeel/google-iosadmobads.git",
+        "cordova-plugin-firebase": "^0.1.24",
+        "cordova-plugin-whitelist": "^1.3.2"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-firebase": {},
+            "cordova-plugin-whitelist": {},
+            "cordova-admob": {}
+        },
+        "platforms": [
+            "android",
+            "ios"
+        ]
+    }
+}

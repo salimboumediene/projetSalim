@@ -1,0 +1,4 @@
+homyjob:
+    resource: "@HomyjobBundle/Controller/"
+    type:     annotation
+    prefix:   /

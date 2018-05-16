@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="HomyjobBundle\Entity\Apprenti" table="apprenti">
+    <indexes>
+      <index name="role_id" columns="role_id,region_id,hashtag_id"/>
+      <index name="hashtag_id" columns="hashtag_id"/>
+      <index name="region_id" columns="region_id"/>
+      <index name="role_id_2" columns="role_id"/>
+    </indexes>
+    <id name="apprenti" association-key="true"/>
+    <field name="apprentiPswd" type="string" column="apprenti_pswd" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">password de l'apprenti</option>
+      </options>
+    </field>
+    <field name="apprentiMail" type="string" column="apprenti_mail" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">email de l'apprenti</option>
+      </options>
+    </field>
+    <field name="apprentiDescr" type="string" column="apprenti_descr" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">description de l'apprenti</option>
+      </options>
+    </field>
+    <field name="apprentiPhoto" type="string" column="apprenti_photo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">photo de l'apprenti</option>
+      </options>
+    </field>
+    <field name="apprentiNom" type="string" column="apprenti_nom" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">nom de famille de l'apprenti</option>
+      </options>
+    </field>
+    <field name="apprentiPrenom" type="string" column="apprenti_prenom" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">prénom de l'apprenti</option>
+      </options>
+    </field>
+    <field name="roleId" type="integer" column="role_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">role de l'apprenti</option>
+      </options>
+    </field>
+    <field name="regionId" type="integer" column="region_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">region de l'apprenti</option>
+      </options>
+    </field>
+    <field name="hashtagId" type="integer" column="hashtag_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">hashtag de l'apprenti</option>
+      </options>
+    </field>
+    <one-to-one field="apprenti" target-entity="Chat" fetch="LAZY">
+      <join-columns>
+        <join-column name="apprenti_id" referenced-column-name="apprenti_id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

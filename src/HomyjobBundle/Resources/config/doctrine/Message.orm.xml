@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="HomyjobBundle\Entity\Message" table="message">
+    <id name="message2" association-key="true"/>
+    <field name="message" type="string" column="message" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">valeur du message</option>
+      </options>
+    </field>
+    <one-to-one field="message2" target-entity="ChatMessage" fetch="LAZY">
+      <join-columns>
+        <join-column name="message_id" referenced-column-name="message_id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

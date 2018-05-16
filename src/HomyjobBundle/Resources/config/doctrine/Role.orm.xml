@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="HomyjobBundle\Entity\Role" table="role">
+    <id name="roleId" type="integer" column="role_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="roleValue" type="integer" column="role_value" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">valeur du rôle</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

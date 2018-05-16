@@ -1,0 +1,32 @@
+{% extends "@Homyjob/header.html.twig" %}
+{% block head %}{% endblock %}
+
+{% block body %}  
+    {{ form_start(form) }}
+        <div class ="container">
+			<h2 class ="mt-4 text-dark">Créer mon<br />nouveau compte</h2>
+			<div class="row justify-content-start mt-4">
+				<div class="col-9"></div>
+				<p class="col-9 ml-1 mb-3 text-dark">Etes-vous:</p>
+			</div>
+			<div class="d-flex ml-1 mb-5">
+				<div class="">
+				{{ form_start(form) }}
+				{% include "@Homyjob/Form/role/widget/checkbox.html.twig" %}
+				{{ form_end(form) }}
+				</div>
+				
+			</div>
+			<div class="mb-3">&nbsp;</div>
+			<div class="d-flex justify-content-center">
+				<button type="button" class="btn pl-5 pr-5 btn-light border btn-lg" onclick="window.location='emailForm.html?type=' + selection" >Je m'inscris</button>
+			</div>
+{{ form_end(form) }}
+			<div class="text-center mb-5">
+				<div><hr style="display:inline-block;width:100px;border-top: 2px solid rgba(0,0,0,.1);" /><p style="color:rgba(0,0,0,.1);display:inline-block;transform: translateY(-10px);margin-left:10px;margin-right:10px;">OU</p><hr style="display:inline-block;width:100px;border-top: 2px solid rgba(0,0,0,.1);" /></div>
+				<h5 class="text-secondary"><a style="cursor:hand;color:inherit;text-decoration:none;" href="loginForm.html">Vous avez déjà un compte ?</a></h5>
+                <p class="text-dark"><a style="cursor:hand;color:inherit;text-decoration:none;" href="pswdForgot.html">Mot de passe oublié?</a></p>
+			</div>
+		</div>
+    
+{% endblock %}    

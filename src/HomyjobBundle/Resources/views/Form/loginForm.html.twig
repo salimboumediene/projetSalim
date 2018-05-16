@@ -1,0 +1,68 @@
+{% extends "@Homyjob/header.html.twig" %}
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<body class = "bg-white">
+        <div class ="container">
+			<h2 class ="mt-4 text-dark">Se connecter à mon compte</h2>
+   		    <div class = "d-flex justify-content-center">
+	    		<form>
+					<div class="d-flex justify-content-center mt-5">
+						<input id ="email" type="text" placeholder="Email" />
+					</div>
+					<div class="d-flex justify-content-center mt-5 mb-5">
+						<input id="password" type="password" placeholder="Mot de passe" />
+						<img id="eye2" alt="" src="../css/images/icons-png/eye-open.png">
+					</div>
+					<div class="d-flex justify-content-center"></div>
+						<button type="button" class="btn pl-5 pr-5 btn-light border btn-lg" onclick="valider()" >Se connecter</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="fixed-bottom text-center mb-3">
+				<div><hr style="display:inline-block;width:100px;border-top: 2px solid rgba(0,0,0,.1);" /><p style="color:rgba(0,0,0,.1);display:inline-block;transform: translateY(-10px);margin-left:10px;margin-right:10px;">OU</p><hr style="display:inline-block;width:100px;border-top: 2px solid rgba(0,0,0,.1);" /></div>
+				<h5 class="text-secondary"><a style="cursor:hand;color:inherit;text-decoration:none;" href="newAccount.html">Je veux m'inscrire !</a></h5>
+        <p class="text-dark"><a style="cursor:hand;color:inherit;text-decoration:none;" href="pswdForgot.html">Mot de passe oublié?</a></p>
+			</div>
+		</div>
+
+    {% block javascript %}    
+	 <script type="text/javascript">
+		$("#eye2").mouseup(function(){
+			$("#password").attr("type", "password");
+		});
+		$("#eye2").mousedown(function(){
+			$("#password").attr("type", "text");
+		});
+
+		function valider() {
+			if (!$("#password").val() || !$("#email").val()){
+				alert("Veullez remplir les champs vides");
+			} else {
+        var email = document.getElementById("email").value;
+        var mdp = document.getElementById("password").value;
+        var params = "id=" + email + "&mdp=" + mdp + "&token=1234";
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://www.winiweek.com/ajaxhomyjob/auth.php", true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200)
+          {
+            if(this.responseText == 0) {
+              alert("Problème lors de la connexion");
+            } else {
+              window.location = "hashtag.html?id=" + this.responseText.split("-")[0];
+            }
+          }
+        };
+        xhr.send(params);
+			}
+		}
+	 </script>
+    {% endblock %}
+
+	</body>
+{% endblock %}
